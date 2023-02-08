@@ -29,3 +29,84 @@ RSpec.describe "Iteration 2" do
   end
 
 end
+
+RSpec.describe "iteration 3" do
+  it "has a working has_inventory? method if inventory is empty" do
+    dealership = Dealership.new("Acme Auto", "123 Main Street")
+
+    expect(dealership.has_inventory?).to eq(false)
+  end
+
+  it "has a working has_inventory? method if inventory is not empty" do
+    dealership = Dealership.new("Acme Auto", "123 Main Street")
+    car_1 = Car.new("Ford Mustang", 1500, 36)
+    car_2 = Car.new("Toyota Prius", 1000, 48)
+    car_3 = Car.new("Toyota Tercel", 500, 48)
+    car_4 = Car.new("Chevrolet Bronco", 1250, 24)
+    dealership.add_car(car_1)
+    dealership.add_car(car_2)
+    dealership.add_car(car_3)
+    dealership.add_car(car_4)
+
+    expect(dealership.has_inventory?).to eq(true)
+  end
+
+  it "can list cars by make for Toyota" do
+    dealership = Dealership.new("Acme Auto", "123 Main Street")
+    car_1 = Car.new("Ford Mustang", 1500, 36)
+    car_2 = Car.new("Toyota Prius", 1000, 48)
+    car_3 = Car.new("Toyota Tercel", 500, 48)
+    car_4 = Car.new("Chevrolet Bronco", 1250, 24)
+    dealership.add_car(car_1)
+    dealership.add_car(car_2)
+    dealership.add_car(car_3)
+    dealership.add_car(car_4)
+
+    p dealership.cars_by_make("Toyota")
+    expect(dealership.cars_by_make("Toyota").length).to eq(2)
+  end
+
+  it "can list cars by make for Ford" do
+    dealership = Dealership.new("Acme Auto", "123 Main Street")
+    car_1 = Car.new("Ford Mustang", 1500, 36)
+    car_2 = Car.new("Toyota Prius", 1000, 48)
+    car_3 = Car.new("Toyota Tercel", 500, 48)
+    car_4 = Car.new("Chevrolet Bronco", 1250, 24)
+    dealership.add_car(car_1)
+    dealership.add_car(car_2)
+    dealership.add_car(car_3)
+    dealership.add_car(car_4)
+
+    p dealership.cars_by_make("Ford")
+    expect(dealership.cars_by_make("Ford").length).to eq(1)
+  end
+
+  it "can tally the value of all cars in inventory" do
+    dealership = Dealership.new("Acme Auto", "123 Main Street")
+    car_1 = Car.new("Ford Mustang", 1500, 36)
+    car_2 = Car.new("Toyota Prius", 1000, 48)
+    car_3 = Car.new("Toyota Tercel", 500, 48)
+    car_4 = Car.new("Chevrolet Bronco", 1250, 24)
+    dealership.add_car(car_1)
+    dealership.add_car(car_2)
+    dealership.add_car(car_3)
+    dealership.add_car(car_4)
+
+    expect(dealership.total_value).to eq(156000)
+  end
+
+  it "can relay details of itself with hash" do
+    dealership = Dealership.new("Acme Auto", "123 Main Street")
+    car_1 = Car.new("Ford Mustang", 1500, 36)
+    car_2 = Car.new("Toyota Prius", 1000, 48)
+    car_3 = Car.new("Toyota Tercel", 500, 48)
+    car_4 = Car.new("Chevrolet Bronco", 1250, 24)
+    dealership.add_car(car_1)
+    dealership.add_car(car_2)
+    dealership.add_car(car_3)
+    dealership.add_car(car_4)
+
+    p dealership.details
+  end
+
+end
