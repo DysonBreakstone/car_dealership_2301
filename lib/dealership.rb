@@ -45,8 +45,13 @@ class Dealership
   end
 
   def inventory_hash
-    i_hash = {"Ford" => self.cars_by_make("Ford"), "Toyota" => self.cars_by_make("Toyota"), "Chevrolet" => self.cars_by_make("Chevrolet")}
-
+    brands = @inventory.map{|car| car.make}
+    unique_brands = brands.uniq
+    i_hash = {}
+    unique_brands.each do |brand|
+      i_hash.store(brand,self.cars_by_make(brand))
+    end
+    i_hash
   end
 
 end
