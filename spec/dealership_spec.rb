@@ -5,7 +5,7 @@ RSpec.describe "Iteration 2" do
   it "exists" do
     dealership = Dealership.new("Acme Auto", "123 Main Street")
 
-    expect (dealership).to be_an_instance_of(Dealership)
+    expect(dealership).to be_an_instance_of(Dealership)
   end
 
   it "instantiates with empty inventory" do
@@ -24,7 +24,7 @@ RSpec.describe "Iteration 2" do
     dealership.add_car(car_2)
 
     p dealership.inventory
-    expect(dealership.inventory).to eq(2)
+    expect(dealership.inventory_count).to eq(2)
 
   end
 
