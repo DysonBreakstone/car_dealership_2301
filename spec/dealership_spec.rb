@@ -126,7 +126,7 @@ RSpec.describe "Iteration 4" do
     expect(dealership.average_price_of_car).to eq("39,000")
   end
 
-  xit "can sort cars by price" do
+  it "can sort cars by price" do
     dealership = Dealership.new("Acme Auto", "123 Main Street")
     car_1 = Car.new("Ford Mustang", 1500, 36)
     car_2 = Car.new("Toyota Prius", 1000, 48)
@@ -140,7 +140,7 @@ RSpec.describe "Iteration 4" do
     p dealership.cars_sorted_by_price
   end
 
-  xit "has an inventory hash" do
+  it "has an inventory hash" do
     dealership = Dealership.new("Acme Auto", "123 Main Street")
     car_1 = Car.new("Ford Mustang", 1500, 36)
     car_2 = Car.new("Toyota Prius", 1000, 48)

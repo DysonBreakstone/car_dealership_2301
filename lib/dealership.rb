@@ -34,4 +34,19 @@ class Dealership
     details_hash = {"total_value" => self.total_value, "address" => @address}
   end
 
+  def average_price_of_car
+    average = self.total_value / @inventory.length
+    average = average.to_s.chars.to_a.reverse.each_slice(3) # I stole this code from the internet - I hope that's okay!
+    average.map(&:join).join(',').reverse # this line too
+  end
+
+  def cars_sorted_by_price
+    cars_sorted = @inventory.sort {|a,b| a.total_cost <=> b.total_cost}
+  end
+
+  def inventory_hash
+    i_hash = {"Ford" => self.cars_by_make("Ford"), "Toyota" => self.cars_by_make("Toyota"), "Chevrolet" => self.cars_by_make("Chevrolet")}
+
+  end
+
 end
